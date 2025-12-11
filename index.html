@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarya Patil - Portfolio</title>
+    <title>Aarya Patil | Software Engineer</title>
     <style>
         * {
             margin: 0;
@@ -12,351 +12,566 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: #2c3e50;
+            background-color: #f8f9fa;
         }
 
-        .container {
+        /* Navigation */
+        nav {
+            background: #1a1a2e;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header {
-            background: white;
-            padding: 40px;
-            margin: 20px 0;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        nav .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #a8b2c1;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 80px 20px;
             text-align: center;
         }
 
-        header h1 {
-            font-size: 3em;
-            color: #667eea;
-            margin-bottom: 10px;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
         }
 
-        header p {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 20px;
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: #a8b2c1;
+            margin-bottom: 1rem;
+            font-weight: 400;
         }
 
-        .contact-info {
+        .hero .university {
+            font-size: 1.1rem;
+            color: #6c7a89;
+            margin-bottom: 2rem;
+        }
+
+        .contact-bar {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 2rem;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .contact-info a {
-            color: #667eea;
+        .contact-item {
+            color: #a8b2c1;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.95rem;
         }
 
-        .contact-info a:hover {
-            color: #764ba2;
+        .contact-item:hover {
+            color: white;
         }
 
-        .about-section {
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #6c7a89;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
             background: white;
-            padding: 40px;
-            margin: 30px 0;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .about-section h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2em;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .about-section p {
-            font-size: 1.1em;
+        .about-content p {
+            font-size: 1.1rem;
             line-height: 1.8;
-            color: #555;
+            color: #4a5568;
+            margin-bottom: 1.5rem;
         }
 
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .skill-item {
+            background: #f1f5f9;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            color: #1a1a2e;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Portfolio Grid */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 30px;
-            margin: 30px 0;
+            margin-top: 40px;
         }
 
-        .portfolio-item {
+        .portfolio-card {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .portfolio-item:hover {
+        .portfolio-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .portfolio-item h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .module-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .card-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
+            padding: 30px;
+        }
+
+        .card-header h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .module-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.6em;
-            font-weight: normal;
-        }
-
-        .portfolio-item p {
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .portfolio-item ul {
-            margin-left: 20px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .portfolio-item ul li {
-            margin: 8px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .video-container {
-            margin: 20px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: white;
-            margin-top: 50px;
-        }
-
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .skill-tag {
-            background: #f0f2ff;
-            color: #667eea;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-body p {
+            color: #4a5568;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .card-body h4 {
+            color: #1a1a2e;
+            margin: 20px 0 10px 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .card-body ul {
+            margin-left: 20px;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+
+        .card-body ul li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: #f8fafc;
+            border-left: 4px solid #1a1a2e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 10px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            background: #1a1a2e;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background: #16213e;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: white;
+            color: #1a1a2e;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #1a1a2e;
+            transition: all 0.3s;
+            font-weight: 500;
+            margin: 5px;
+        }
+
+        .btn-secondary:hover {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: 60px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #a8b2c1;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f0f1e;
+            color: #6c7a89;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
-            
-            header h1 {
-                font-size: 2em;
+
+            nav .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
             }
-            
-            .contact-info {
+
+            .contact-bar {
                 flex-direction: column;
-                gap: 10px;
+                gap: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Aarya Patil</h1>
-            <p>Master of Science in Computer Science</p>
-            <p>Northeastern University | Khoury College of Computer Sciences</p>
-            <div class="contact-info">
-                <span>📍 Boston, MA</span>
-                <span>📧 <a href="mailto:patil.aary@northeastern.edu">patil.aary@northeastern.edu</a></span>
-                <span>📱 (617) 407-8318</span>
-                <span>🔗 <a href="https://www.linkedin.com/in/aaryapatil1113" target="_blank">LinkedIn</a></span>
-            </div>
-        </header>
-
-        <div class="about-section">
-            <h2>About Me</h2>
-            <p>
-                I'm a passionate software engineer with a unique blend of technical expertise and design sensibility. 
-                My journey in technology began in a household where innovation was a way of life—my mother, a computer 
-                science professor, inspired my curiosity about how software systems work. I specialize in front-end 
-                development, UI/UX design, and full-stack development, with a strong foundation in database management 
-                and machine learning.
-            </p>
-            <p style="margin-top: 15px;">
-                At Northeastern, I'm deepening my technical skills while staying true to my passion for creating 
-                beautiful, functional software. I believe the best technology combines excellent engineering with 
-                thoughtful design—making powerful tools that people genuinely enjoy using.
-            </p>
-            <div class="skills-tags">
-                <span class="skill-tag">Front-End Development</span>
-                <span class="skill-tag">UI/UX Design</span>
-                <span class="skill-tag">Full-Stack Development</span>
-                <span class="skill-tag">Database Management</span>
-                <span class="skill-tag">Machine Learning</span>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">Angular</span>
-                <span class="skill-tag">MySQL</span>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">AP</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
+    </nav>
 
-        <h2 style="color: white; text-align: center; font-size: 2.5em; margin: 40px 0;">Career Preparation Portfolio</h2>
-
-        <div class="portfolio-grid">
-            <!-- Module 4: Professional Introduction -->
-            <div class="portfolio-item">
-                <h3>
-                    Professional Introduction
-                    <span class="module-badge">Module 4</span>
-                </h3>
-                <p>
-                    My professional elevator pitch showcasing my unique blend of technical skills and design mindset. 
-                    This introduction highlights my journey from Computer Engineering to pursuing a Master's at Northeastern, 
-                    emphasizing my passion for creating user-centered software solutions.
-                </p>
-                <p><strong>Key Highlights:</strong></p>
-                <ul>
-                    <li>Background in Computer Engineering from Pune University</li>
-                    <li>Experience in full-stack development and UI/UX design</li>
-                    <li>Leadership in technical projects and community initiatives</li>
-                    <li>Focus on front-end development and database systems</li>
-                </ul>
-                <a href="https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a822ac7e-0237-47bd-883b-b38f0005c9b0" target="_blank" class="btn">Watch Elevator Pitch</a>
-            </div>
-
-            <!-- Module 7: Professional Resume -->
-            <div class="portfolio-item">
-                <h3>
-                    Professional Resume
-                    <span class="module-badge">Module 7</span>
-                </h3>
-                <p>
-                    A comprehensive resume highlighting my education, technical skills, work experience, and projects. 
-                    Optimized for software engineering positions with emphasis on front-end development, UI/UX, and 
-                    full-stack capabilities.
-                </p>
-                <p><strong>Experience Highlights:</strong></p>
-                <ul>
-                    <li>Software Engineer Intern at Vishwaguru Infotech</li>
-                    <li>Social Media Intern at Insurance Bhaiya</li>
-                    <li>OncoFusion: Cancer Detection ML Framework</li>
-                    <li>E-Wallet Application with Flutter & Firebase</li>
-                    <li>Chief of Media, IOIT TENET 2024</li>
-                </ul>
-                <p><strong>Availability:</strong> January 2026 - December 2027</p>
-                <a href="#" class="btn">Download Resume</a>
-            </div>
-
-            <!-- Module 8: Tell Me About Yourself -->
-            <div class="portfolio-item">
-                <h3>
-                    Tell Me About Yourself
-                    <span class="module-badge">Module 8</span>
-                </h3>
-                <p>
-                    A compelling 2-minute video interview response demonstrating my communication skills, professional 
-                    presence, and ability to articulate my journey, qualifications, and career aspirations.
-                </p>
-                <div class="video-container">
-                    <p><strong>Video Content Overview:</strong></p>
-                    <ul>
-                        <li><strong>Background:</strong> Technology upbringing and passion for software design</li>
-                        <li><strong>Key Achievement:</strong> Led OncoFusion ML framework development</li>
-                        <li><strong>Unique Strength:</strong> Self-taught UI/UX designer with technical depth</li>
-                        <li><strong>Leadership:</strong> Chief of Media, Basketball Captain</li>
-                        <li><strong>Current Focus:</strong> Advanced CS coursework at Northeastern</li>
-                    </ul>
-                    <p style="margin-top: 10px; font-style: italic; color: #666;">
-                        "I'm here because I want to build things that are both technically excellent and genuinely enjoyable to use."
-                    </p>
-                </div>
-                <a href="https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=5702eb9c-15eb-45c0-b5d5-b3b000450d18" target="_blank" class="btn">Watch Video</a>
-            </div>
-
-            <!-- Module 9: Job Search Strategy -->
-            <div class="portfolio-item">
-                <h3>
-                    Job Search Strategy Plan
-                    <span class="module-badge">Module 9</span>
-                </h3>
-                <p>
-                    A comprehensive strategic plan outlining my career goals, target companies, action items, and networking 
-                    approach for securing a Summer 2026 software engineering co-op position.
-                </p>
-                <p><strong>Strategic Components:</strong></p>
-                <ul>
-                    <li><strong>SMART Career Goals:</strong> 4 specific, measurable objectives</li>
-                    <li><strong>Skills & Strengths:</strong> Database management, front-end dev, UI/UX, leadership, creativity</li>
-                    <li><strong>Target Companies:</strong> Disney, Amazon, Google, Apple, Figma, Canva, Meta, Microsoft</li>
-                    <li><strong>Action Plan:</strong> 5 prioritized tasks with deadlines</li>
-                    <li><strong>Networking:</strong> Career fairs, Khoury events, Boston tech meetups</li>
-                </ul>
-                <p><strong>Timeline:</strong> January 2026 - April 2026</p>
-                <a href="#" class="btn">View Strategy</a>
-            </div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Aarya Patil</h1>
+        <p class="subtitle">Software Engineer | Front-End Developer | UI/UX Designer</p>
+        <p class="university">Master of Science in Computer Science | Northeastern University</p>
+        
+        <div class="contact-bar">
+            <span class="contact-item">📍 Boston, MA</span>
+            <a href="mailto:patil.aary@northeastern.edu" class="contact-item">📧 patil.aary@northeastern.edu</a>
+            <span class="contact-item">📱 (617) 407-8318</span>
+            <a href="https://www.linkedin.com/in/aaryapatil1113" target="_blank" class="contact-item">🔗 LinkedIn</a>
         </div>
-
-        <div class="about-section" style="text-align: center;">
-            <h2>Let's Connect</h2>
-            <p style="margin-bottom: 20px;">
-                I'm actively seeking Summer 2026 co-op opportunities in software engineering, particularly in 
-                roles that combine front-end development, UI/UX design, or full-stack development. Let's discuss 
-                how I can contribute to your team!
-            </p>
-            <a href="mailto:patil.aary@northeastern.edu" class="btn" style="margin: 10px;">Email Me</a>
-            <a href="https://www.linkedin.com/in/aaryapatil1113" target="_blank" class="btn" style="margin: 10px;">Connect on LinkedIn</a>
-        </div>
-
-        <footer>
-            <p>&copy; 2025 Aarya Patil | Northeastern University</p>
-            <p>Career Preparation Portfolio | Khoury College of Computer Sciences</p>
-        </footer>
     </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Bridging technical excellence with thoughtful design</p>
+            </div>
+            
+            <div class="about-content">
+                <p>
+                    I'm a passionate software engineer with a unique blend of technical expertise and design sensibility. 
+                    My journey in technology began in a household where innovation was a way of life—my mother, a computer 
+                    science professor, inspired my curiosity about how software systems work.
+                </p>
+                <p>
+                    I specialize in front-end development, UI/UX design, and full-stack development, with a strong 
+                    foundation in database management and machine learning. At Northeastern University's Khoury College, 
+                    I'm deepening my technical skills while staying true to my passion for creating beautiful, functional software.
+                </p>
+                <p>
+                    I believe the best technology combines excellent engineering with thoughtful design—making powerful 
+                    tools that people genuinely enjoy using.
+                </p>
+                
+                <h4 style="margin-top: 30px; margin-bottom: 20px; color: #1a1a2e; font-size: 1.3rem;">Technical Skills</h4>
+                <div class="skills-grid">
+                    <div class="skill-item">Java</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">Angular</div>
+                    <div class="skill-item">MySQL</div>
+                    <div class="skill-item">MongoDB</div>
+                    <div class="skill-item">HTML/CSS</div>
+                    <div class="skill-item">React</div>
+                    <div class="skill-item">UI/UX Design</div>
+                    <div class="skill-item">Figma</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Career Preparation Portfolio</h2>
+                <p>Documentation of my professional development journey</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Module 4 -->
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3>Professional Introduction</h3>
+                        <span class="module-tag">Module 4</span>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            A concise professional elevator pitch showcasing my unique blend of technical skills and 
+                            design mindset, highlighting my journey and career focus.
+                        </p>
+                        
+                        <h4>Key Highlights</h4>
+                        <ul>
+                            <li>Background in Computer Engineering from Pune University</li>
+                            <li>Experience in full-stack development and UI/UX design</li>
+                            <li>Leadership in technical projects and community initiatives</li>
+                            <li>Focus on front-end development and database systems</li>
+                        </ul>
+                        
+                        <a href="https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=a822ac7e-0237-47bd-883b-b38f0005c9b0" target="_blank" class="btn-primary">Watch Elevator Pitch</a>
+                    </div>
+                </div>
+
+                <!-- Module 7 -->
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3>Professional Resume</h3>
+                        <span class="module-tag">Module 7</span>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Comprehensive resume optimized for software engineering positions with emphasis on 
+                            front-end development, UI/UX, and full-stack capabilities.
+                        </p>
+                        
+                        <h4>Experience Highlights</h4>
+                        <ul>
+                            <li>Software Engineer Intern at Vishwaguru Infotech</li>
+                            <li>Social Media Intern at Insurance Bhaiya</li>
+                            <li>OncoFusion: ML Framework for Cancer Detection</li>
+                            <li>E-Wallet Application with Flutter & Firebase</li>
+                            <li>Chief of Media, IOIT TENET 2024</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <p><strong>Availability:</strong> January 2026 - December 2027</p>
+                        </div>
+                        
+                        <a href="#" class="btn-primary">Download Resume</a>
+                    </div>
+                </div>
+
+                <!-- Module 8 -->
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3>Tell Me About Yourself</h3>
+                        <span class="module-tag">Module 8</span>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            A compelling 2-minute video interview response demonstrating communication skills, 
+                            professional presence, and ability to articulate my journey and career aspirations.
+                        </p>
+                        
+                        <div class="highlight-box">
+                            <h4>Video Content Overview</h4>
+                            <ul>
+                                <li><strong>Background:</strong> Technology upbringing and passion for software design</li>
+                                <li><strong>Key Achievement:</strong> Led OncoFusion ML framework development</li>
+                                <li><strong>Unique Strength:</strong> Self-taught UI/UX designer with technical depth</li>
+                                <li><strong>Leadership:</strong> Chief of Media, Basketball Captain</li>
+                                <li><strong>Current Focus:</strong> Advanced CS coursework at Northeastern</li>
+                            </ul>
+                            <p style="margin-top: 15px; font-style: italic; color: #4a5568;">
+                                "I'm here because I want to build things that are both technically excellent and genuinely enjoyable to use."
+                            </p>
+                        </div>
+                        
+                        <a href="https://northeastern.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=5702eb9c-15eb-45c0-b5d5-b3b000450d18" target="_blank" class="btn-primary">Watch Full Interview</a>
+                    </div>
+                </div>
+
+                <!-- Module 9 -->
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <h3>Job Search Strategy Plan</h3>
+                        <span class="module-tag">Module 9</span>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Comprehensive strategic plan outlining career goals, target companies, action items, and 
+                            networking approach for securing Summer 2026 software engineering co-op.
+                        </p>
+                        
+                        <h4>Strategic Components</h4>
+                        <ul>
+                            <li><strong>SMART Goals:</strong> 4 specific, measurable career objectives</li>
+                            <li><strong>Core Strengths:</strong> Database management, front-end dev, UI/UX, leadership</li>
+                            <li><strong>Target Companies:</strong> Disney, Amazon, Google, Apple, Figma, Canva, Meta, Microsoft</li>
+                            <li><strong>Action Plan:</strong> 5 prioritized tasks with realistic deadlines</li>
+                            <li><strong>Networking:</strong> Career fairs, Khoury events, Boston tech meetups</li>
+                        </ul>
+                        
+                        <div class="highlight-box">
+                            <p><strong>Timeline:</strong> January 2026 - April 2026</p>
+                            <p><strong>Focus:</strong> Summer 2026 Co-op Opportunities</p>
+                        </div>
+                        
+                        <a href="#" class="btn-primary">View Strategy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p>
+                I'm actively seeking Summer 2026 co-op opportunities in software engineering, particularly in 
+                roles that combine front-end development, UI/UX design, or full-stack development.
+            </p>
+            <div>
+                <a href="mailto:patil.aary@northeastern.edu" class="btn-secondary">Email Me</a>
+                <a href="https://www.linkedin.com/in/aaryapatil1113" target="_blank" class="btn-secondary">LinkedIn Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Aarya Patil | Northeastern University</p>
+        <p>Khoury College of Computer Sciences | Career Preparation Portfolio</p>
+    </footer>
 </body>
 </html>
