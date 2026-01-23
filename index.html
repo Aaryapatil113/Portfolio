@@ -13,14 +13,14 @@
         }
 
         :root {
-            --primary: #00d4ff;
-            --secondary: #a855f7;
-            --accent: #ec4899;
-            --bg-dark: #0a0e1a;
-            --bg-card: #121829;
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --bg-dark: #0f1419;
+            --bg-card: #1a1f2e;
             --text-primary: #ffffff;
-            --text-secondary: #d4d9e8;
-            --text-muted: #8b92a8;
+            --text-secondary: #c9d1d9;
+            --text-muted: #8b949e;
+            --border: #30363d;
         }
 
         body {
@@ -34,45 +34,31 @@
             scroll-behavior: smooth;
         }
 
-        .bg-animation {
+        /* Simple background */
+        .bg-simple {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background:
-                    radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+            background: #0f1419;
         }
 
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.5;
-        }
-
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
             padding: 1.5rem 5%;
-            background: rgba(10, 14, 26, 0.8);
-            backdrop-filter: blur(20px);
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid var(--border);
         }
 
         nav .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -83,9 +69,7 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
             font-weight: 600;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-light);
             letter-spacing: -1px;
         }
 
@@ -99,29 +83,14 @@
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-            transition: width 0.3s;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--primary-light);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -130,67 +99,98 @@
         }
 
         .hero-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
             padding-top: 80px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .hero-tag {
-            display: inline-block;
-            padding: 0.5rem 1.2rem;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 50px;
-            color: var(--primary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
-        }
-
-        .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
+        .hero-text {
             opacity: 0;
             animation: fadeInUp 0.8s ease 0.2s forwards;
         }
 
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 6px;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
         .hero h1 .gradient-text {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary-light);
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-secondary);
             max-width: 600px;
             margin-bottom: 2rem;
-            line-height: 1.8;
+            line-height: 1.7;
+        }
+
+        /* Photo Container */
+        .photo-container {
             opacity: 0;
             animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .photo-wrapper {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            box-shadow: 0 20px 60px rgba(37, 99, 235, 0.3);
+            position: relative;
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1f2e 0%, #2a2f3e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-light);
         }
 
         .hero-buttons {
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.6s forwards;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-decoration: none;
             transition: all 0.3s;
             cursor: pointer;
@@ -198,65 +198,61 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--primary);
             color: white;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
         .btn-primary:hover {
+            background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
-            border: 2px solid rgba(0, 212, 255, 0.5);
+            border: 1px solid var(--border);
             color: var(--text-primary);
         }
 
         .btn-secondary:hover {
             border-color: var(--primary);
-            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary-light);
         }
 
         .contact-pills {
             display: flex;
             gap: 1rem;
-            margin-top: 3rem;
+            margin-top: 2.5rem;
             flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.8s forwards;
         }
 
         .contact-pill {
-            padding: 0.75rem 1.5rem;
-            background: rgba(18, 24, 41, 0.8);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 50px;
+            padding: 0.6rem 1.2rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 6px;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: all 0.3s;
         }
 
         .contact-pill:hover {
-            background: rgba(0, 212, 255, 0.1);
             border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
+            color: var(--primary-light);
         }
 
+        /* Sections */
         section {
-            padding: 6rem 5%;
-            max-width: 1400px;
+            padding: 5rem 5%;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-header {
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
 
         .section-header.visible {
@@ -265,41 +261,39 @@
         }
 
         .section-tag {
-            color: var(--primary);
-            font-size: 0.95rem;
+            color: var(--primary-light);
+            font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             letter-spacing: -1px;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-primary);
         }
 
         .section-description {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             color: var(--text-secondary);
-            max-width: 700px;
         }
 
+        /* About */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
         }
 
         .about-text {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
 
         .about-text.visible {
@@ -308,16 +302,16 @@
         }
 
         .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
+            line-height: 1.7;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .skills-section {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease 0.2s;
+            transform: translateY(20px);
+            transition: all 0.6s ease 0.2s;
         }
 
         .skills-section.visible {
@@ -327,51 +321,47 @@
 
         .skills-section h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--primary-light);
+            margin-bottom: 1.2rem;
         }
 
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 0.8rem;
         }
 
         .skill-item {
-            padding: 0.75rem 1.5rem;
-            background: rgba(18, 24, 41, 0.6);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 50px;
+            padding: 0.6rem 1.2rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 6px;
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s;
         }
 
         .skill-item:hover {
-            background: rgba(0, 212, 255, 0.1);
             border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
+            color: var(--primary-light);
         }
 
+        /* Portfolio Cards */
         .portfolio-grid {
             display: grid;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .portfolio-card {
             background: var(--bg-card);
-            border-radius: 24px;
-            padding: 3rem;
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: all 0.6s ease;
-            position: relative;
         }
 
         .portfolio-card.visible {
@@ -380,93 +370,83 @@
         }
 
         .portfolio-card:hover {
-            border-color: rgba(0, 212, 255, 0.5);
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            border-color: var(--primary);
         }
 
         .card-header {
             display: flex;
             justify-content: space-between;
             align-items: start;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
             gap: 1rem;
         }
 
         .card-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-primary);
         }
 
         .module-badge {
-            padding: 0.5rem 1.2rem;
-            background: rgba(0, 212, 255, 0.15);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 50px;
-            color: var(--primary);
-            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 6px;
+            color: var(--primary-light);
+            font-size: 0.8rem;
             font-weight: 600;
         }
 
         .card-description {
             color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
 
         .card-section {
-            margin: 2rem 0;
+            margin: 1.5rem 0;
         }
 
         .card-section h4 {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            color: var(--primary-light);
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
             font-weight: 600;
         }
 
         .expandable-item {
-            background: rgba(10, 14, 26, 0.5);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            background: rgba(15, 20, 25, 0.5);
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--border);
             overflow: hidden;
             transition: all 0.3s;
         }
 
         .expandable-item:hover {
-            border-color: rgba(0, 212, 255, 0.4);
+            border-color: rgba(37, 99, 235, 0.5);
         }
 
         .expandable-header {
-            padding: 1.25rem 1.5rem;
+            padding: 1rem 1.2rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             gap: 1rem;
             user-select: none;
-            transition: background 0.3s;
-        }
-
-        .expandable-header:hover {
-            background: rgba(0, 212, 255, 0.05);
         }
 
         .expand-icon {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
-            font-size: 0.8rem;
+            color: var(--primary-light);
+            font-size: 0.7rem;
             transition: transform 0.3s;
             flex-shrink: 0;
         }
@@ -478,12 +458,12 @@
         .expandable-title {
             color: var(--text-primary);
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .expandable-content {
             display: none;
-            padding: 0 1.5rem 1.5rem 4rem;
+            padding: 0 1.2rem 1.2rem 3.2rem;
         }
 
         .expandable-content.active {
@@ -492,32 +472,33 @@
 
         .expandable-content p {
             color: var(--text-muted);
-            line-height: 1.7;
+            line-height: 1.6;
+            font-size: 0.9rem;
         }
 
         .info-box {
-            background: rgba(0, 212, 255, 0.1);
-            border-left: 3px solid var(--primary);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem 0;
+            background: rgba(37, 99, 235, 0.05);
+            border-left: 2px solid var(--primary);
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
         }
 
         .info-box p {
             color: var(--text-secondary);
-            margin: 0.5rem 0;
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
         }
 
         .video-container {
             position: relative;
             width: 100%;
             max-width: 700px;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
             padding-bottom: 39.375%;
-            border-radius: 16px;
+            border-radius: 8px;
             overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+            border: 1px solid var(--border);
         }
 
         .video-container iframe {
@@ -533,34 +514,33 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
+        /* Footer */
         footer {
             text-align: center;
-            padding: 4rem 5%;
-            border-top: 1px solid rgba(0, 212, 255, 0.2);
-            background: rgba(10, 14, 26, 0.8);
+            padding: 3rem 5%;
+            border-top: 1px solid var(--border);
         }
 
         footer h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
         }
 
         footer p {
             color: var(--text-secondary);
-            margin: 1rem 0;
+            margin: 0.8rem 0;
+            font-size: 0.95rem;
         }
 
         footer .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1.2rem;
             margin: 2rem 0;
         }
 
@@ -572,12 +552,21 @@
         }
 
         @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .photo-wrapper {
+                margin: 0 auto 2rem auto;
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
             }
 
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
 
             .video-container {
@@ -587,354 +576,363 @@
     </style>
 </head>
 <body>
-<div class="bg-animation"></div>
+    <div class="bg-simple"></div>
 
-<nav>
-    <div class="container">
-        <div class="logo">AP.</div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#portfolio">Work</a>
-            <a href="#contact">Contact</a>
+    <nav>
+        <div class="container">
+            <div class="logo">AP.</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#portfolio">Work</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<section class="hero">
-    <div class="hero-content">
-        <span class="hero-tag">Available for Summer 2026 Co-op</span>
-        <h1>
-            Hi, I'm <span class="gradient-text">Aarya Patil</span><br>
-            Software Engineer & Designer
-        </h1>
-        <p>
-            I craft beautiful digital experiences that blend technical excellence with thoughtful design.<br>
-            Master's in Computer Science at Northeastern University.
-        </p>
-        <div class="hero-buttons">
-            <a href="#portfolio" class="btn btn-primary">View My Work</a>
-            <a href="https://aaryapatil113.github.io/Portfolio/Resume_NU.pdf" target="_blank" class="btn btn-secondary">Download Resume</a>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-tag">Available for Summer 2026 Co-op</span>
+                <h1>
+                    Hi, I'm <span class="gradient-text">Aarya Patil</span><br>
+                    Software Engineer & Designer
+                </h1>
+                <p>
+                    I craft beautiful digital experiences that blend technical excellence with thoughtful design.<br>
+                    Master's in Computer Science at Northeastern Unive...
+                </p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                    <a href="https://aaryapatil113.github.io/Portfolio/Resume_NU.pdf" target="_blank" class="btn btn-secondary">Download Resume</a>
+                </div>
+                <div class="contact-pills">
+                    <a href="mailto:patil.aary@northeastern.edu" class="contact-pill">📧 Email</a>
+                    <a href="https://www.linkedin.com/in/aaryapatil1113" target="_blank" class="contact-pill">💼 LinkedIn</a>
+                    <a href="tel:6174078318" class="contact-pill">📱 (617) 407-8318</a>
+                    <span class="contact-pill">📍 Boston, MA</span>
+                </div>
+            </div>
+
+            <div class="photo-container">
+                <div class="photo-wrapper">
+                    <!-- Replace this with your photo URL from GitHub -->
+                    <img src="https://aaryapatil113.github.io/Portfolio/photo.jpg" alt="Aarya Patil" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'>AP</div>'">
+                </div>
+            </div>
         </div>
-        <div class="contact-pills">
-            <a href="mailto:patil.aary@northeastern.edu" class="contact-pill">📧 Email</a>
-            <a href="https://www.linkedin.com/in/aaryapatil1113" target="_blank" class="contact-pill">💼 LinkedIn</a>
-            <a href="tel:6174078318" class="contact-pill">📱 (617) 407-8318</a>
-            <span class="contact-pill">📍 Boston, MA</span>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="about">
-    <div class="section-header">
-        <div class="section-tag">About Me</div>
-        <h2 class="section-title">Bridging Code & Creativity</h2>
-        <p class="section-description">
-            Building the future of web, one pixel at a time
-        </p>
-    </div>
-
-    <div class="about-content">
-        <div class="about-text">
-            <p>
-                I'm a passionate software engineer with a unique blend of technical expertise and design sensibility.
+    <section id="about">
+        <div class="section-header">
+            <div class="section-tag">About Me</div>
+            <h2 class="section-title">Bridging Code & Creativity</h2>
+            <p class="section-description">
+                Building the future of web, one pixel at a time
             </p>
-            <p>
-                I specialize in front-end development, UI/UX design, and full-stack development, with a strong foundation in database management and machine learning. At Northeastern University's Khoury College, I'm deepening my technical skills while staying true to my passion for creating beautiful, functional software.
-            </p>
         </div>
 
-        <div class="skills-section">
-            <h3>Technical Skills</h3>
-            <div class="skills-list">
-                <span class="skill-item">Java</span>
-                <span class="skill-item">Python</span>
-                <span class="skill-item">JavaScript</span>
-                <span class="skill-item">Angular</span>
-                <span class="skill-item">React</span>
-                <span class="skill-item">MySQL</span>
-                <span class="skill-item">HTML/CSS</span>
-                <span class="skill-item">UI/UX Design</span>
-                <span class="skill-item">Figma</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="portfolio">
-    <div class="section-header">
-        <div class="section-tag">Portfolio</div>
-        <h2 class="section-title">Career Preparation</h2>
-        <p class="section-description">
-            Documentation of my professional development journey
-        </p>
-    </div>
-
-    <div class="portfolio-grid">
-        <div class="portfolio-card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Professional Introduction</h3>
-                </div>
-                <span class="module-badge">Module 4</span>
-            </div>
-
-            <p class="card-description">
-                A concise professional elevator pitch showcasing my unique blend of technical skills and design mindset.
-            </p>
-
-            <div class="card-section">
-                <h4>Key Highlights</h4>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">Computer Engineering Background</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Bachelor's in Computer Engineering from Pune University with strong foundation in programming, data structures, and system design.</p>
-                    </div>
-                </div>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">Full-Stack & UI/UX Expertise</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Developed applications using Angular, JavaScript, and modern web technologies with emphasis on creating intuitive interfaces.</p>
-                    </div>
-                </div>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">Leadership Experience</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Chief of Media for IOIT TENET 2024, IOIT Model UN USG Global Communication, and volunteer educator.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="video-container">
-                <iframe src="https://northeastern.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=a822ac7e-0237-47bd-883b-b38f0005c9b0&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=false&interactivity=all" allowfullscreen allow="autoplay"></iframe>
-            </div>
-        </div>
-
-        <div class="portfolio-card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Professional Resume</h3>
-                </div>
-                <span class="module-badge">Module 7</span>
-            </div>
-
-            <p class="card-description">
-                Comprehensive resume optimized for software engineering positions.
-            </p>
-
-            <div class="card-section">
-                <h4>Experience Highlights</h4>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">Vishwaguru Infotech - Software Engineer Intern</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Developed full-stack applications with emphasis on front-end using HTML, CSS, JavaScript, and Angular.</p>
-                    </div>
-                </div>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">OncoFusion - Cancer Detection ML Framework</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Led development of multi-model ensemble framework using Python and scikit-learn.</p>
-                    </div>
-                </div>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">E-Wallet Application</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Built cross-platform mobile app with Flutter & Firebase.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-box">
-                <p><strong>Availability:</strong> January 2026 - December 2027</p>
-            </div>
-
-            <div class="card-buttons">
-                <a href="https://aaryapatil113.github.io/Portfolio/Resume_NU.pdf" target="_blank" class="btn btn-primary">View Resume</a>
-                <a href="https://aaryapatil113.github.io/Portfolio/Resume_NU.pdf" download class="btn btn-secondary">Download PDF</a>
-            </div>
-        </div>
-
-        <div class="portfolio-card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Tell Me About Yourself</h3>
-                </div>
-                <span class="module-badge">Module 8</span>
-            </div>
-
-            <p class="card-description">
-                A 2-minute video interview response.
-            </p>
-
-            <div class="card-section">
-                <h4>Video Content Overview</h4>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">Background & Passion</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Bachelor's in Computer Engineering. Developing interest in software systems.</p>
-                    </div>
-                </div>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">Key Achievement - OncoFusion</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Led ML system development for cancer detection.</p>
-                    </div>
-                </div>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">Self-Taught UI/UX Designer</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Independently learned design principles and applied them to projects.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info-box">
-                <p style="font-style: italic;">
-                    "I'm here because I want to build things that are both technically excellent and genuinely enjoyable to use."
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    I'm a passionate software engineer with a unique blend of technical expertise and design sensibility.
+                </p>
+                <p>
+                    I specialize in front-end development, UI/UX design, and full-stack development, with a strong foundation in database management and machine learning. At Northeastern University's Khoury College, I'm deepening my technical skills while staying true to my passion for creating beautiful, functional software.
                 </p>
             </div>
 
-            <div class="video-container">
-                <iframe src="https://northeastern.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=5702eb9c-15eb-45c0-b5d5-b3b000450d18&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=false&interactivity=all" allowfullscreen allow="autoplay"></iframe>
+            <div class="skills-section">
+                <h3>Technical Skills</h3>
+                <div class="skills-list">
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">Angular</span>
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">MySQL</span>
+                    <span class="skill-item">HTML/CSS</span>
+                    <span class="skill-item">UI/UX Design</span>
+                    <span class="skill-item">Figma</span>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="portfolio-card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Job Search Strategy</h3>
-                </div>
-                <span class="module-badge">Module 9</span>
-            </div>
-
-            <p class="card-description">
-                Strategic plan for securing Summer 2026 software engineering co-op.
+    <section id="portfolio">
+        <div class="section-header">
+            <div class="section-tag">Portfolio</div>
+            <h2 class="section-title">Career Preparation</h2>
+            <p class="section-description">
+                Documentation of my professional development journey
             </p>
+        </div>
 
-            <div class="card-section">
-                <h4>Strategic Components</h4>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">SMART Career Goals</div>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Professional Introduction</h3>
                     </div>
-                    <div class="expandable-content">
-                        <p>4 objectives: securing co-op, LeetCode challenges, HCI knowledge, career path.</p>
+                    <span class="module-badge">Module 4</span>
+                </div>
+
+                <p class="card-description">
+                    A concise professional elevator pitch showcasing my unique blend of technical skills and design mindset.
+                </p>
+
+                <div class="card-section">
+                    <h4>Key Highlights</h4>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">Computer Engineering Background</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Bachelor's in Computer Engineering from Pune University with strong foundation in programming.</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">Full-Stack & UI/UX Expertise</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Developed applications using Angular, JavaScript, and modern web technologies.</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">Leadership Experience</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Chief of Media for IOIT TENET 2024, IOIT Model UN USG Global Communication.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">Target Companies</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>Disney, Amazon, Google, Apple, Figma, Canva, Meta, Microsoft.</p>
-                    </div>
-                </div>
-
-                <div class="expandable-item">
-                    <div class="expandable-header" onclick="toggleDropdown(this)">
-                        <div class="expand-icon">▶</div>
-                        <div class="expandable-title">Action Plan</div>
-                    </div>
-                    <div class="expandable-content">
-                        <p>5 prioritized tasks with deadlines through April 2026.</p>
-                    </div>
+                <div class="video-container">
+                    <iframe src="https://northeastern.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=a822ac7e-0237-47bd-883b-b38f0005c9b0&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=false&interactivity=all" allowfullscreen allow="autoplay"></iframe>
                 </div>
             </div>
 
-            <div class="info-box">
-                <p><strong>Timeline:</strong> January 2026 - April 2026</p>
-                <p><strong>Focus:</strong> Summer 2026 Co-op Opportunities</p>
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Professional Resume</h3>
+                    </div>
+                    <span class="module-badge">Module 7</span>
+                </div>
+
+                <p class="card-description">
+                    Comprehensive resume optimized for software engineering positions.
+                </p>
+
+                <div class="card-section">
+                    <h4>Experience Highlights</h4>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">Vishwaguru Infotech - Software Engineer Intern</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Developed full-stack applications with emphasis on front-end.</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">OncoFusion - Cancer Detection ML Framework</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Led development of multi-model ensemble framework.</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">E-Wallet Application</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Built cross-platform mobile app with Flutter & Firebase.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Availability:</strong> January 2026 - December 2027</p>
+                </div>
+
+                <div class="card-buttons">
+                    <a href="https://aaryapatil113.github.io/Portfolio/Resume_NU.pdf" target="_blank" class="btn btn-primary">View Resume</a>
+                    <a href="https://aaryapatil113.github.io/Portfolio/Resume_NU.pdf" download class="btn btn-secondary">Download PDF</a>
+                </div>
             </div>
 
-            <div class="card-buttons">
-                <a href="https://aaryapatil113.github.io/Portfolio/Job_Strategy_12-10.pdf" target="_blank" class="btn btn-primary">View Strategy</a>
-                <a href="https://aaryapatil113.github.io/Portfolio/Job_Strategy_12-10.pdf" download class="btn btn-secondary">Download PDF</a>
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Tell Me About Yourself</h3>
+                    </div>
+                    <span class="module-badge">Module 8</span>
+                </div>
+
+                <p class="card-description">
+                    A 2-minute video interview response.
+                </p>
+
+                <div class="card-section">
+                    <h4>Video Content Overview</h4>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">Background & Passion</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Bachelor's in Computer Engineering. Interest in software systems.</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">Key Achievement - OncoFusion</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Led ML system development for cancer detection.</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">Self-Taught UI/UX Designer</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Independently learned design principles.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p style="font-style: italic;">
+                        "I'm here because I want to build things that are both technically excellent and genuinely enjoyable to use."
+                    </p>
+                </div>
+
+                <div class="video-container">
+                    <iframe src="https://northeastern.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=5702eb9c-15eb-45c0-b5d5-b3b000450d18&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&captions=false&interactivity=all" allowfullscreen allow="autoplay"></iframe>
+                </div>
+            </div>
+
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Job Search Strategy</h3>
+                    </div>
+                    <span class="module-badge">Module 9</span>
+                </div>
+
+                <p class="card-description">
+                    Strategic plan for securing Summer 2026 co-op.
+                </p>
+
+                <div class="card-section">
+                    <h4>Strategic Components</h4>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">SMART Career Goals</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>4 objectives: securing co-op, LeetCode, HCI knowledge, career path.</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">Target Companies</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>Disney, Amazon, Google, Apple, Figma, Canva, Meta, Microsoft.</p>
+                        </div>
+                    </div>
+
+                    <div class="expandable-item">
+                        <div class="expandable-header" onclick="toggleDropdown(this)">
+                            <div class="expand-icon">▶</div>
+                            <div class="expandable-title">Action Plan</div>
+                        </div>
+                        <div class="expandable-content">
+                            <p>5 prioritized tasks with deadlines through April 2026.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Timeline:</strong> January 2026 - April 2026</p>
+                    <p><strong>Focus:</strong> Summer 2026 Co-op</p>
+                </div>
+
+                <div class="card-buttons">
+                    <a href="https://aaryapatil113.github.io/Portfolio/Job_Strategy_12-10.pdf" target="_blank" class="btn btn-primary">View Strategy</a>
+                    <a href="https://aaryapatil113.github.io/Portfolio/Job_Strategy_12-10.pdf" download class="btn btn-secondary">Download PDF</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer id="contact">
-    <h3>Let's Work Together</h3>
-    <p>I'm actively seeking Summer 2026 co-op opportunities in software engineering.</p>
+    <footer id="contact">
+        <h3>Let's Work Together</h3>
+        <p>I'm actively seeking Summer 2026 co-op opportunities in software engineering.</p>
 
-    <div class="social-links">
-        <a href="mailto:patil.aary@northeastern.edu" class="btn btn-primary">Get In Touch</a>
-        <a href="https://www.linkedin.com/in/aaryapatil1113" target="_blank" class="btn btn-secondary">LinkedIn</a>
-    </div>
+        <div class="social-links">
+            <a href="mailto:patil.aary@northeastern.edu" class="btn btn-primary">Get In Touch</a>
+            <a href="https://www.linkedin.com/in/aaryapatil1113" target="_blank" class="btn btn-secondary">LinkedIn</a>
+        </div>
 
-    <p style="margin-top: 3rem; color: var(--text-muted); font-size: 0.9rem;">
-        © 2025 Aarya Patil • Northeastern University • Khoury College
-    </p>
-</footer>
+        <p style="margin-top: 2rem; color: var(--text-muted); font-size: 0.85rem;">
+            © 2025 Aarya Patil • Northeastern University
+        </p>
+    </footer>
 
-<script>
-    function toggleDropdown(header) {
-        const content = header.nextElementSibling;
-        const isActive = header.classList.contains('active');
+    <script>
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
 
-        if (isActive) {
-            header.classList.remove('active');
-            content.classList.remove('active');
-        } else {
-            header.classList.add('active');
-            content.classList.add('active');
-        }
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+            if (isActive) {
+                header.classList.remove('active');
+                content.classList.remove('active');
+            } else {
+                header.classList.add('active');
+                content.classList.add('active');
             }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '-50px'
-    });
+        }
 
-    document.querySelectorAll('.section-header, .about-text, .skills-section, .portfolio-card').forEach(el => {
-        observer.observe(el);
-    });
-</script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '-50px'
+        });
+
+        document.querySelectorAll('.section-header, .about-text, .skills-section, .portfolio-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
